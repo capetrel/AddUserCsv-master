@@ -1,6 +1,6 @@
 # AddUserCsv-master
 
-I Don't know why, there is missing the "uploads" directory in th commit.
+I Don't know why, there is missing the "uploads" directory.
 
 Plugins for the cms Cumulusclips
 
