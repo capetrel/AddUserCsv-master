@@ -1,15 +1,15 @@
 <?php
 
-class AddUserCsv extends PluginAbstract {
+class AddUsersCsv extends PluginAbstract {
     /**
      * @var string Name of plugin
      */
-    public $name = 'Add User Csv';
+    public $name = 'Add Users Csv';
 
     /**
      * @var string Description of plugin
      */
-    public $description = 'Plugin which load and parse a csv file for adding users';
+    public $description = 'Plugin qui permet d\'ajouter plusieurs utilisateur avec un fichier au format tableur (csv, excel, OpenOffice.';
 
     /**
      * @var string Name of plugin author
@@ -24,7 +24,7 @@ class AddUserCsv extends PluginAbstract {
     /**
      * @var string Current version of plugin
      */
-    public $version = '1.0.0';
+    public $version = '1.2.0';
 
     /**
      * The plugin's gateway into core. Place plugin hook attachments here.
@@ -32,9 +32,9 @@ class AddUserCsv extends PluginAbstract {
      */
     public function load() {
 
-    	// Call settings methode for display form file explore, and treatment of this one.
+    	// Call settings method for display form file explore, and treatment of this one.
     	// http://cumulusclips.org/docs/plugin-hooks/
-        Plugin::attachEvent('theme.body_style', array(__CLASS__, 'Settings'));
+        // Plugin::attachEvent('theme.body', array(__CLASS__, 'Settings'));
 
     }
 
@@ -44,10 +44,7 @@ class AddUserCsv extends PluginAbstract {
     public function Install() {
 
     	// Add a field to the table 'settings' like "key", "value"
-    	Settings::Set ("add_users_csv", "");
-
-    	// get the value in the key
-    	// Settings::get("choose_file");
+    	Settings::Set ("add_users_csv", "csv files");
 
     }
 
@@ -70,7 +67,7 @@ class AddUserCsv extends PluginAbstract {
 	public function Settings() {
 
 		// dirname returns a parent directory's path. dirname(__FILE__) Get the directory of current included file.
-		include(dirname(__FILE__) . '/addCsv.phtml');
+        include(dirname(__FILE__) . '/addUsersForm.phtml');
 
     }
 

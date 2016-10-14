@@ -1,0 +1,38 @@
+
+<!-- formulaire html qui s'affiche dans le body des paramètre -->
+<div class="block">
+
+    <h1>Ce plugin permet d'ajouter des utilisateurs à l'aide d'un fichier CSV</h1>
+
+    <div class="bg-info">
+        <div class="alert-info">
+            <?php include(dirname(__FILE__) . '/addUsersService.php'); ?>
+        </div>
+    </div>
+
+    <p>
+        <strong>Taille maximum autorisé pour le fichier : <?php echo AddUsersHelper::weightFile($max_size); ?>.</strong> <br>
+        Le fichier doit être au format .csv, la première ligne indique le nom des colonnes, <br>
+        <strong>Modèle d'ordre des colonnes</strong> : vide, nom, prénom, identifiant, mot de passe, email.<br>
+
+        <h6>Télécharger un modèle de fichier :</h6>
+        <a href="<?=HOST?>/cc-content/plugins/AddUsersCsv/templates/template-csv.csv" title="Modele de fichier au format csv">Modèle de fichier au format csv, cliquez ici.</a> <br>
+
+    </p>
+
+    <!-- TODO rajouter un fichier modèle à télécharger -->
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group select-file <?=(isset ($error)) ? 'has-error' : ''?>">
+            <label class="control-label">Fichier CSV :</label>
+            <span>Parcourir</span>
+            <!-- double vérification du poid du fichier ici et dans le code php -->
+            <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+
+            <!-- le type="file" inclus un texte qui s'affiche sur la droite du champ-->
+            <input id="upfile" type="file" name="upfile" />
+            <br><br>
+            <input type="submit" class="button button-upload" name="submit" value="Ajouter" />
+        </div>
+    </form>
+</div>
